@@ -53,6 +53,7 @@ function getDBConnection() {
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             PDO::ATTR_EMULATE_PREPARES => false,
+            PDO::ATTR_TIMEOUT => 3
         ];
         
         // Attempt connecting directly to database
@@ -104,13 +105,7 @@ function getDBConnection() {
 
         return $pdo;
     } catch (PDOException $e) {
-        if (!headers_sent()) {
-            http_response_code(500);
-        }
-        echo json_encode([
-            'success' => false,
-            'message' => 'Database connection failed: ' . $e->getMessage()
-        ]);
-        exit;
+        // Return null instead of terminating script with 500 error
+        return null;
     }
 }
