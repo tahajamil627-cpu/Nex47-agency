@@ -6,11 +6,7 @@
 session_start();
 require_once __DIR__ . '/../api/config.php';
 
-// If user visits GET request and is already logged in, redirect to CRM Dashboard
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) {
-    header('Location: index.php');
-    exit;
-}
+// Direct login display - no redirect loops
 
 $error = '';
 $success = '';
@@ -70,7 +66,7 @@ ame = :name LIMIT 1");
             $_SESSION['admin_email'] = $adminUser['email'];
             $_SESSION['admin_role'] = $adminUser['role'] ?? 'superadmin';
 
-            header('Location: index.php');
+            header('Location: /admin/index.php');
             exit;
         } else {
             $error = 'Access Denied: Incorrect password or username.';
@@ -174,7 +170,7 @@ ame = :name LIMIT 1");
       <?php endif; ?>
 
       <!-- Login Form -->
-      <form method="POST" action="login.php" class="mt-6 space-y-4">
+      <form method="POST" action="/admin/login.php" class="mt-6 space-y-4">
         
         <div>
           <label class="block text-xs font-mono uppercase text-gray-400 mb-1.5">Admin Email / Username</label>
