@@ -1,0 +1,10 @@
+{
+  "name": "nex47/agency-website",
+  "description": "NEX - 47 CATALYS'S Performance Marketing & Growth Agency Web Portal",
+  "type": "project",
+  "require": {
+    "php": ">=8.0",
+    "ext-pdo": "*",
+    "ext-pdo_mysql": "*"
+  }
+}

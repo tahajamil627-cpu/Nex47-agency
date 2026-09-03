@@ -1,0 +1,320 @@
+/* ==========================================================================
+   NEX - 47 CATALYS'S - Core Design System & Styling
+   Neon Cyberpunk & Luxury Obsidian Agency Aesthetic
+   ========================================================================== */
+
+:root {
+  --bg-pitch: #060608;
+  --bg-surface: #0c0d12;
+  --bg-card: #11121a;
+  --bg-card-hover: #161822;
+  --bg-card-border: rgba(57, 255, 20, 0.15);
+  --bg-card-border-hover: rgba(57, 255, 20, 0.45);
+  
+  --neon-green: #39ff14;
+  --neon-green-glow: rgba(57, 255, 20, 0.35);
+  --neon-lime: #cbfb45;
+  --neon-cyan: #00f0ff;
+  --neon-emerald: #10b981;
+  
+  --text-main: #ffffff;
+  --text-muted: #9ba3b4;
+  --text-sub: #64748b;
+  
+  --font-heading: 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* Global Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-pitch);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--bg-pitch);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Background Cyber Grid */
+.cyber-grid {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.cyber-grid-dense {
+  background-image: 
+    linear-gradient(to right, rgba(57, 255, 20, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(57, 255, 20, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-pitch);
+}
+::-webkit-scrollbar-thumb {
+  background: #1e2430;
+  border-radius: 4px;
+  border: 1px solid rgba(57, 255, 20, 0.2);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-green);
+}
+
+/* Glowing Neon Elements */
+.glow-neon-text {
+  text-shadow: 0 0 16px rgba(57, 255, 20, 0.6), 0 0 32px rgba(57, 255, 20, 0.2);
+}
+
+.glow-box-neon {
+  box-shadow: 0 0 25px rgba(57, 255, 20, 0.2), inset 0 0 15px rgba(57, 255, 20, 0.05);
+}
+
+.glow-box-neon-strong {
+  box-shadow: 0 0 35px rgba(57, 255, 20, 0.4), inset 0 0 20px rgba(57, 255, 20, 0.15);
+}
+
+.glow-cyan-text {
+  text-shadow: 0 0 16px rgba(0, 240, 255, 0.6);
+}
+
+/* Buttons */
+.btn-neon {
+  background: var(--neon-green);
+  color: #050507;
+  font-weight: 700;
+  padding: 12px 28px;
+  border-radius: 9999px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  border: 1px solid var(--neon-green);
+  box-shadow: 0 0 20px rgba(57, 255, 20, 0.35);
+  cursor: pointer;
+}
+
+.btn-neon:hover {
+  background: #ffffff;
+  color: #050507;
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.5), 0 0 50px rgba(57, 255, 20, 0.4);
+}
+
+.btn-ghost-neon {
+  background: rgba(57, 255, 20, 0.05);
+  color: #ffffff;
+  font-weight: 600;
+  padding: 12px 26px;
+  border-radius: 9999px;
+  border: 1px solid rgba(57, 255, 20, 0.3);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-ghost-neon:hover {
+  background: rgba(57, 255, 20, 0.15);
+  border-color: var(--neon-green);
+  color: var(--neon-green);
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(57, 255, 20, 0.25);
+}
+
+/* Glassmorphism Card */
+.glass-card {
+  background: rgba(17, 18, 26, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(57, 255, 20, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.8), 0 0 24px rgba(57, 255, 20, 0.15);
+}
+
+/* Digital Otters Style Service Card */
+.service-split-box {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #0d0e14;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.service-split-box:hover {
+  border-color: rgba(57, 255, 20, 0.5);
+}
+
+/* Service Pill / Chip */
+.service-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.service-chip:hover {
+  background: rgba(57, 255, 20, 0.12);
+  border-color: var(--neon-green);
+  color: var(--neon-green);
+  transform: translateY(-1px);
+}
+
+/* Monospace Badge */
+.mono-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  padding: 4px 10px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mono-tag-green {
+  background: rgba(57, 255, 20, 0.08);
+  border: 1px solid rgba(57, 255, 20, 0.3);
+  color: var(--neon-green);
+}
+
+.mono-tag-cyan {
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  color: var(--neon-cyan);
+}
+
+/* Pulse animation */
+@keyframes neonPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.96);
+  }
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--neon-green);
+  box-shadow: 0 0 10px var(--neon-green);
+  animation: neonPulse 2s infinite ease-in-out;
+}
+
+/* Interactive Slider Custom Styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: #1a1c26;
+  outline: none;
+  border: 1px solid rgba(57, 255, 20, 0.2);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--neon-green);
+  cursor: pointer;
+  box-shadow: 0 0 15px var(--neon-green);
+  border: 2px solid #060608;
+  transition: transform 0.15s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* Floating WhatsApp Button */
+.whatsapp-float {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  background: #25d366;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45);
+  z-index: 99;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.65);
+}
+
+/* Modal Backdrop */
+.modal-overlay {
+  background: rgba(4, 5, 8, 0.85);
+  backdrop-filter: blur(10px);
+}
+
+/* Animation utilities */
+.animate-float {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
