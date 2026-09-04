@@ -4,7 +4,8 @@
  */
 
 session_start();
-require_once __DIR__ . '/../api/config.php';
+if (file_exists(__DIR__ . '/../api/config.php')) { require_once __DIR__ . '/../api/config.php'; }
+if (!function_exists('getDBConnection')) { function getDBConnection() { return null; } }
 
 // Direct login display - no redirect loops
 
@@ -31,8 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $pdo = getDBConnection();
 
             if ($pdo !== null) {
-                $stmt = $pdo->prepare("SELECT * FROM dmins WHERE email = :email OR 
-ame = :name LIMIT 1");
+                $stmt = $pdo->prepare("SELECT * FROM `admins` WHERE `email` = :email OR `name` = :name LIMIT 1");
+
                 $stmt->execute([':email' => $email, ':name' => $email]);
                 $admin = $stmt->fetch();
 
@@ -40,7 +41,7 @@ ame = :name LIMIT 1");
                     $valid = true;
                     $adminUser = $admin;
                     try {
-                        $pdo->prepare("UPDATE dmins SET last_login = NOW() WHERE id = ?")->execute([$admin['id']]);
+                        $pdo->prepare("UPDATE `admins` SET `last_login` = NOW() WHERE `id` = ?")->execute([$admin["id"]]);
                     } catch (Exception $ex) {}
                 }
             }
